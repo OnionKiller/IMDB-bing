@@ -1,0 +1,17 @@
+{
+    "name":"IMDB-bing-calc",
+    "description":"calculates the time to bing watch all the episodes of a series on the IMDB page",
+    "version":"0.1",
+    "manifest_version":2,
+    "background":
+    {
+        "scripts":["./background.js"],
+        "persistent":false
+    },
+    "options_page":"./ui.html",
+    "permissions":
+    [
+        "tabs",
+        "https://www.imdb.com/*"
+    ]
+}
