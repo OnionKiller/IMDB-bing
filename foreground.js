@@ -1,21 +1,3 @@
-function render(mins = 2650 /* mock value*/) {
-
-    const box = document.querySelector(".title_wrapper .subtext");
-    if (box === null)
-        return;
-    const separator = document.querySelector(".title_wrapper .subtext .ghost");
-
-    const point_of_interest = document.querySelectorAll(".title_wrapper .subtext .ghost")[0];
-    box.insertBefore(separator.cloneNode(true), point_of_interest);
-    box.insertBefore(box.querySelector("time").cloneNode(true), point_of_interest);
-
-    const time = document.querySelectorAll(".title_wrapper .subtext time")[1];;
-    time.dateTime = "PT" + mins + "M";
-    const hours = Math.floor(mins / 60);
-    const remainder = mins - 60 * hours;
-    time.innerText = `~ ${hours}h ${remainder != 0 ? `${remainder} min` : ""} full`;
-}
-
 async function get_api_keys() {
     return new Promise((resolve, reject) => {
         chrome.runtime.sendMessage({ get: "api" }, response => {
