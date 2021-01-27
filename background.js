@@ -1,3 +1,5 @@
+//tmdb api key stored in api-keys.js in  as const tmdb_api_key
+
 let tab_url;
 
 let current_series =
