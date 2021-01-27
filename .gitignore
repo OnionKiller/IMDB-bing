@@ -1,9 +1,3 @@
 api_keys.js
 replace.txt
-..bfg-report/2021-01-27/12-37-13/cache-stats.txt
-..bfg-report/2021-01-27/12-37-13/object-id-map.old-new.txt
-..bfg-report/2021-01-27/12-37-13/changed-files.txt
-..bfg-report/2021-01-27/12-43-36/protected-dirt/d4cd3a73-HEAD.csv
-..bfg-report/2021-01-27/12-43-36/object-id-map.old-new.txt
-..bfg-report/2021-01-27/12-43-36/changed-files.txt
-..bfg-report/2021-01-27/12-43-36/cache-stats.txt
+..bfg-report/*
