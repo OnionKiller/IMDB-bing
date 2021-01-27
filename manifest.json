@@ -3,6 +3,13 @@
     "description":"calculates the time to bing watch all the episodes of a series on the IMDB page",
     "version":"0.1",
     "manifest_version":2,
+    "content_scripts":
+    [
+        {
+            "matches":["https://www.imdb.com/*"],
+            "js":["utils.js","foreground.js"]
+        }
+    ],
     "background":
     {
         "scripts":["./api_keys.js","./background.js"],
