@@ -7,7 +7,7 @@
     [
         {
             "matches":["https://www.imdb.com/*"],
-            "js":["utils.js","foreground.js"]
+            "js":["utils.js","render.js","foreground.js"]
         }
     ],
     "background":
