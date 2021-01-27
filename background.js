@@ -1,11 +1,15 @@
-const ***REMOVED***;
-
 let tab_url;
 
 let current_series =
 {
     cache: []
 };
+
+chrome.tabs.onActivated.addListener(tab =>{
+    chrome.tabs.sendMessage({message:"test"}, res =>{
+        console.log(res);
+    });
+})
 
 chrome.tabs.onActivated.addListener(tab => {
     chrome.tabs.get(tab.tabId, current_tab => {
@@ -15,8 +19,10 @@ chrome.tabs.onActivated.addListener(tab => {
             console.log(tab_url);
             //add frontend code
             chrome.tabs.executeScript(null, { file: './foreground.js' }, async () => {
-                console.log(await estimate_full_size(get_imdb_tt_id(tab_url)))
                 console.log("frontend added");
+                const r = await estimate_full_size(get_imdb_tt_id(tab_url));
+                chrome.tabs.sendMessage(tab.tabId,{ message: r });
+                console.log("message sendt:", r);
             });
         }
     });
@@ -27,13 +33,13 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, current_tab) => {
         if (url_changed) {
             if (tab_url != current_tab.url) {
                 tab_url = current_tab.url;
-                console.log( await estimate_full_size(get_imdb_tt_id(tab_url)));
+                console.log(await estimate_full_size(get_imdb_tt_id(tab_url)));
                 console.log("Url changed to: " + tab_url);
 
-                 //add frontend code
+                //add frontend code
                 chrome.tabs.executeScript(null, { file: './foreground.js' }, async () => {
                     console.log(await estimate_full_size(get_imdb_tt_id(tab_url)))
-                    console.log("frontend added");
+                    console.log("frontend executed");
                 });
 
             }
