@@ -5,11 +5,7 @@
     "manifest_version":2,
     "background":
     {
-<<<<<<< HEAD
         "scripts":["./api_keys.js","./background.js"],
-=======
-        "scripts":["./background.js"],
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
         "persistent":false
     },
     "options_page":"./ui.html",
