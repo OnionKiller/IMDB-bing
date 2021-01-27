@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function render() {
     const mock_mins = 2581;
 
@@ -18,3 +19,18 @@ chrome.runtime.onMessage.addListener((request, sender, senResponse) => {
 });
 console.log("frontend fully loaded");
 render();
+=======
+const mock_mins = 2581;
+
+const box = document.querySelector(".title_wrapper .subtext");
+const separator = document.querySelector(".title_wrapper .subtext .ghost");
+
+box.appendChild(separator.cloneNode(true));
+box.appendChild(box.children[0].cloneNode(true));
+
+const time = box.lastChild;
+time.dateTime = "PT"+mock_mins+"M";
+time.innerText = ""+mock_mins/60+"h";
+
+console.log("frontend hello");
+>>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
