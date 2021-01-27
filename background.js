@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-const ***REMOVED***;
-
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
 let tab_url;
 
 let current_series =
@@ -10,15 +5,12 @@ let current_series =
     cache: []
 };
 
-<<<<<<< HEAD
 chrome.tabs.onActivated.addListener(tab =>{
     chrome.tabs.sendMessage({message:"test"}, res =>{
         console.log(res);
     });
 })
 
-=======
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
 chrome.tabs.onActivated.addListener(tab => {
     chrome.tabs.get(tab.tabId, current_tab => {
         tab_url = current_tab.url;
@@ -27,15 +19,10 @@ chrome.tabs.onActivated.addListener(tab => {
             console.log(tab_url);
             //add frontend code
             chrome.tabs.executeScript(null, { file: './foreground.js' }, async () => {
-<<<<<<< HEAD
                 console.log("frontend added");
                 const r = await estimate_full_size(get_imdb_tt_id(tab_url));
                 chrome.tabs.sendMessage(tab.tabId,{ message: r });
                 console.log("message sendt:", r);
-=======
-                console.log(await estimate_full_size(get_imdb_tt_id(tab_url)))
-                console.log("frontend added");
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
             });
         }
     });
@@ -46,7 +33,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, current_tab) => {
         if (url_changed) {
             if (tab_url != current_tab.url) {
                 tab_url = current_tab.url;
-<<<<<<< HEAD
                 console.log(await estimate_full_size(get_imdb_tt_id(tab_url)));
                 console.log("Url changed to: " + tab_url);
 
@@ -54,15 +40,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, current_tab) => {
                 chrome.tabs.executeScript(null, { file: './foreground.js' }, async () => {
                     console.log(await estimate_full_size(get_imdb_tt_id(tab_url)))
                     console.log("frontend executed");
-=======
-                console.log( await estimate_full_size(get_imdb_tt_id(tab_url)));
-                console.log("Url changed to: " + tab_url);
-
-                 //add frontend code
-                chrome.tabs.executeScript(null, { file: './foreground.js' }, async () => {
-                    console.log(await estimate_full_size(get_imdb_tt_id(tab_url)))
-                    console.log("frontend added");
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
                 });
 
             }
