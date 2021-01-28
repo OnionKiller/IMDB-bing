@@ -15,7 +15,7 @@ function render(mins = 2650 /* mock value*/) {
     time.dateTime = "PT" + mins + "M";
     const hours = Math.floor(mins / 60);
     const remainder = mins - 60 * hours;
-    time.innerText = `~ ${hours}h ${remainder != 0 ? `${remainder} min` : ""} full`;
+    time.innerText = `~ ${hours}h ${remainder != 0 ? `${remainder}min` : ""} full`;
 }
 
 function render_new_layout(mins = 2650 /* mock value*/) {
