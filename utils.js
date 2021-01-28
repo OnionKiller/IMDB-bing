@@ -48,6 +48,8 @@ async function JSON_request(url) {
 
 async function estimate_full_size(imdb_tt_id,tmdb_api_key) {
     const data = await tmdb_type(imdb_tt_id,tmdb_api_key);
+    if(isNaN(data))
+        return;
     if (data.is_tv) {
         const detail = await JSON_request(`https://api.themoviedb.org/3/tv/${data.tv_raw.id}?api_key=${tmdb_api_key}&language=en-US`);
         const t = detail.episode_run_time[0];
