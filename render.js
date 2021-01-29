@@ -1,5 +1,8 @@
 function render(mins = 2650 /* mock value*/) {
 
+    if(isNaN(mins))
+        return;
+
     const box = document.querySelector(".title_wrapper .subtext");
     if (box === null) {
         render_new_layout(mins);
@@ -29,5 +32,5 @@ function render_new_layout(mins = 2650 /* mock value*/) {
     const time = box.lastChild;
     const hours = Math.floor(mins / 60);
     const remainder = mins - 60 * hours;
-    time.innerText = `~ ${hours}h ${remainder != 0 ? `${remainder} min` : ""} to watch all`;
+    time.innerText = `~ ${hours}h ${remainder != 0 ? `${remainder}min` : ""} to watch all`;
 }
