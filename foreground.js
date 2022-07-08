@@ -1,36 +1,31 @@
-<<<<<<< HEAD
-function render() {
-    const mock_mins = 2581;
-
-    const box = document.querySelector(".title_wrapper .subtext");
-    const separator = document.querySelector(".title_wrapper .subtext .ghost");
-
-    box.appendChild(separator.cloneNode(true));
-    box.appendChild(box.children[0].cloneNode(true));
-
-    const time = box.lastChild;
-    time.dateTime = "PT" + mock_mins + "M";
-    time.innerText = "" + (mock_mins / 60).toFixed(2) + "h";
-
-    console.log("frontend hello");
+async function get_api_keys() {
+    return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({ get: "api" }, response => {
+            resolve(response);
+        });
+    });
 }
+
+//set reciving end
 chrome.runtime.onMessage.addListener((request, sender, senResponse) => {
     console.log(request);
 });
+
 console.log("frontend fully loaded");
-render();
-=======
-const mock_mins = 2581;
+get_api_keys().then(r => {
+    //console.log(r);
+    var tmdb_api_key = r.keys.tmdb;
+    estimate_full_size(get_imdb_tt_id(window.location.href), tmdb_api_key).then(r => {
+        render(r);
+    })
+});
 
-const box = document.querySelector(".title_wrapper .subtext");
-const separator = document.querySelector(".title_wrapper .subtext .ghost");
-
-box.appendChild(separator.cloneNode(true));
-box.appendChild(box.children[0].cloneNode(true));
-
-const time = box.lastChild;
-time.dateTime = "PT"+mock_mins+"M";
-time.innerText = ""+mock_mins/60+"h";
-
-console.log("frontend hello");
->>>>>>> a433c65177d4593de5c3801c7a474ebb376f3913
+/* investigate why this doesn't work
+TODO
+chrome.runtime.sendMessage({
+    get:"estimate",
+    tt:get_imdb_tt_id(window.location.href)
+},response=>{
+    console.log(response);
+    //render(response.min);
+})*/
