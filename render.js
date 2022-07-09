@@ -23,7 +23,12 @@ function render(mins = 2650 /* mock value*/) {
 
 function render_new_layout(mins = 2650 /* mock value*/) {
 
-    const box = document.querySelector("ul[class*='TitleBlockMetaData']");
+    const boxes = document.querySelectorAll("ul[class*=ipc-inline-list--show-dividers]");
+    let box;
+    boxes.forEach(n=>{
+        if(n.childNodes[0].innerHTML == 'TV Series')
+            box = n;
+    })
     if (box === null)
     {
         console.log("ERROR IN NEW LAYOUT RENDER. Please check if selectors are borken.")
