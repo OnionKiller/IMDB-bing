@@ -23,7 +23,7 @@ function render(mins = 2650 /* mock value*/) {
 
 function render_new_layout(mins = 2650 /* mock value*/) {
 
-    const box = document.querySelector("ul[class*='TitleBlockMetaData']");
+    const box = document.querySelector("ul[class*='ipc-inline-list ipc-inline-list--show-dividers']");
     if (box === null)
         return;
 
