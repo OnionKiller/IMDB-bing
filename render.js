@@ -25,7 +25,10 @@ function render_new_layout(mins = 2650 /* mock value*/) {
 
     const box = document.querySelector("ul[class*='TitleBlockMetaData']");
     if (box === null)
+    {
+        console.log("ERROR IN NEW LAYOUT RENDER. Please check if selectors are borken.")
         return;
+    }
 
     box.appendChild(box.lastChild.cloneNode(true));
 
